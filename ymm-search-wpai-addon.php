@@ -40,7 +40,7 @@ final class YMM_Search_Add_On {
         }
 
         // Add UI elements to the import template
-        $this->add_on->add_field('ymm_search_restrictions', 'YMM Search', 'textarea');
+        $this->add_on->add_field('ymm_search_restrictions', __( 'Restriction', 'ymm-search' ), 'textarea', null, $this->getFormatExplanationMessage());
 
         $this->add_on->set_import_function([$this, 'import']);
         add_action('init', [$this, 'admin_init']);
