@@ -1,2 +1,2 @@
-# wp-all-import-example-addon
-An example add-on for WP All Import. Use as a starting point to build your own add-ons.
+# YMM Search WP Import All Addon
+Imports configured template data into the tables for the YMM Search Plug-in (Year, Make, and Model). 
