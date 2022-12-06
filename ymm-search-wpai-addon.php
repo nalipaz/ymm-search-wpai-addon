@@ -43,7 +43,7 @@ final class YMM_Search_Add_On {
         $this->add_on->add_field('ymm_search_restrictions', 'YMM Search', 'textarea');
 
         $this->add_on->set_import_function([$this, 'import']);
-        add_action('admin_init', [$this, 'admin_init']);
+        add_action('init', [$this, 'admin_init']);
     }
 
     // Check if YMM Search is installed and activate
