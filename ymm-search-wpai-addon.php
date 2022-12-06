@@ -26,20 +26,24 @@ final class YMM_Search_Add_On {
     }
 
     protected function __construct() {
-        
+
         // Define the add-on
         $this->add_on = new RapidAddon('YMM Search Add-On', 'wpai_ymm_search_add_on');
-        
+
+        if (is_plugin_active('ymm-search/ymm-search.php')) {
+            if (!function_exists('Pektsekye_YMM')) {
+              include_once(WP_PLUGIN_DIR . '/ymm-search/ymm-search.php');
+            }
+            //include_once(Pektsekye_YMM()->getPluginPath() . 'Model/Db.php');
+            include_once(WP_PLUGIN_DIR . '/ymm-search/Model/Db.php');
+            $this->ymm_db = new Pektsekye_Ymm_Model_Db();
+        }
+
         // Add UI elements to the import template
         $this->add_on->add_field('ymm_search_restrictions', 'YMM Search', 'textarea');
 
         $this->add_on->set_import_function([$this, 'import']);
         add_action('admin_init', [$this, 'admin_init']);
-        
-        if (!is_plugin_active('ymm-search/ymm-search.php')) {
-            include_once(Pektsekye_YMM()->getPluginPath() . 'Model/Db.php');
-            $this->ymm_db = new Pektsekye_Ymm_Model_Db();
-        }
     }
 
     // Check if YMM Search is installed and activate
